@@ -184,6 +184,9 @@ public class UserService {
         User user = userRepository.getUserById(id);
         user.setStatus(UserStatus.INACTIVE);
         user.setDeactivationTime(ZonedDateTime.now());
+        if(user.getMentorId() != null) {
+            user.setMentorId(null);
+        }
         userRepository.save(user);
         deleteUsersMeetings(user);
         deleteUsersVerificationToken(user);
@@ -273,7 +276,7 @@ public class UserService {
 
 
     public List<SimpleUser> getUnassignedStudents() {
-        return userRepository.getAllByRoleAndMentorId(AuthorityType.STUDENT, null)
+        return userRepository.getAllByRoleAndMentorIdAndStatus(AuthorityType.STUDENT, null, UserStatus.ACTIVE)
                 .stream()
                 .map(SimpleUser::new)
                 .sorted(Comparator.comparing(SimpleUser::getLastName))

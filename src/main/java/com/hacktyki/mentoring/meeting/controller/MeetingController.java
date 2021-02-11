@@ -24,20 +24,6 @@ public class MeetingController {
         this.userService = userService;
     }
 
-
-    @GetMapping("admin/meetingsForDate/{time}")
-    public ResponseEntity<List<MeetingInfoForAdmin>> geAllMeetingsForDate(
-            @PathVariable("time") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) ZonedDateTime time) {
-        List<MeetingInfoForAdmin> meetings = meetingService.getAllMeetingsForDate(time);
-        return ResponseEntity.ok(meetings);
-    }
-
-    @DeleteMapping("admin/deleteMeeting")
-    public ResponseEntity<String> deleteMeeting(@RequestParam Long id) {
-        meetingService.deleteMeeting(id);
-        return ResponseEntity.ok("Meeting deleted");
-    }
-
     @GetMapping("mentor/meetingsForDate/{time}")
     public ResponseEntity<List<MeetingInfoForMentor>> getMeetingsForLoggedMentorAndDate(
             @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) ZonedDateTime time) {

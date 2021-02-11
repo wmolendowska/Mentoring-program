@@ -61,8 +61,8 @@ public class MeetingService {
 
     public List<MeetingInfoForStudent> getMeetingsInfoForStudentsMentorAndDate(User student, ZonedDateTime time) {
         User mentor = userRepository.getUserById(student.getMentorId());
-        List<Meeting> meetings = meetingRepository.findMeetingsByMentorAndTimeBetween(
-                mentor, time.withHour(0).withMinute(0), time.withHour(23).withMinute(59));
+        List<Meeting> meetings = meetingRepository.findMeetingsByMentorAndStudentAndTimeBetween(
+                mentor, null, time.withHour(0).withMinute(0), time.withHour(23).withMinute(59));
         return meetings.stream()
                 .map(MeetingInfoForStudent::new)
                 .collect(Collectors.toList());

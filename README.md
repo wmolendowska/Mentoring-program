@@ -10,13 +10,13 @@ For building and running the application you need JDK 11
 Clone the repository from gitlab
 
 ```
-https://gitlab.com/hacktyki-2020/wiomol-java-mentoring
+https://github.com/wmolendowska/Mentoring-program
 ```
 
 Navigate to the cloned repository directory:
 
 ```
-cd wiomol-java-mentoring/mentoring
+cd wmolendowska-java-mentoring/mentoring
 ```
 
 The project uses Gradle to build, so you have to have Gradle installed.

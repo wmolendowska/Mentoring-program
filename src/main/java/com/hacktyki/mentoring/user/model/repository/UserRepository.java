@@ -20,7 +20,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     User getUserById(Long id);
 
-    List<User> getAllByRoleAndMentorId(AuthorityType role, Long id);
+    List<User> getAllByRoleAndMentorIdAndStatus(AuthorityType role, Long id, UserStatus status);
 
     List<User> getByStatusAndDeactivationTimeBefore(UserStatus status, ZonedDateTime time);
 }

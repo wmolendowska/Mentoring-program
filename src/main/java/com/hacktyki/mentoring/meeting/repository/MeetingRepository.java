@@ -22,6 +22,8 @@ public interface MeetingRepository extends JpaRepository<Meeting, Long> {
 
     List<Meeting> findMeetingsByMentorAndTimeBefore(User mentor, ZonedDateTime time);
 
+    List<Meeting> findMeetingsByMentorAndStudentAndTimeBetween(User mentor, User student, ZonedDateTime from, ZonedDateTime to);
+
     List<Meeting> findMeetingsByMentorAndTimeBetween(User mentor, ZonedDateTime from, ZonedDateTime to);
 
     List<Meeting> findMeetingsByMentorAndTime(User mentor, LocalDate date);

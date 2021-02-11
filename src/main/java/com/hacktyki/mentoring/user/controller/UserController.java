@@ -56,7 +56,7 @@ public class UserController {
     @PostMapping("newUser")
     public void addNewUser(@RequestBody UserAccount userAccount) {
         User user = userService.createEntity(userAccount);
-        applicationEventPublisher.publishEvent(new OnRegistrationCompleteEvent("localhost:4200", user));
+        applicationEventPublisher.publishEvent(new OnRegistrationCompleteEvent("http://localhost:4200", user));
     }
 
     @PutMapping("admin/editUser/{id}")
